@@ -1,6 +1,9 @@
 package com.example.cognizantrever
 
 import android.os.Bundle
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +14,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+    }
+
+    fun clickHandler(view: View) {
+       // EditText nameEdittext = findViewById(R.id.etName)
+        var nameEditText : EditText = findViewById(R.id.etName)
+        var mainTextView : TextView = findViewById(R.id.tvMain)
+
+        var data = nameEditText.text.toString()
+        mainTextView.setText(data)
 
     }
 }
