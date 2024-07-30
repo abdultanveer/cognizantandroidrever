@@ -1,7 +1,9 @@
 package com.example.cognizantrever
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -29,5 +31,25 @@ class MainActivity : AppCompatActivity() {
         hIntention.putExtra("mykey",data)
         startActivity(hIntention)
 
+    }
+
+    fun openDialer(view: View) {
+        var dialerIntention = Intent(Intent.ACTION_DIAL, Uri.parse("tel:12345678"))
+        startActivity(dialerIntention)
+    }
+
+    fun setAlarm(view: View) {
+        createAlarm("cognizantrev",20,43)
+    }
+
+    fun createAlarm(message: String, hour: Int, minutes: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_HOUR, hour)
+            putExtra(AlarmClock.EXTRA_MINUTES, minutes)
+        }
+        //if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        //}
     }
 }

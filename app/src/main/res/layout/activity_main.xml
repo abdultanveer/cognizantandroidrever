@@ -19,11 +19,11 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:onClick="clickHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginTop="9dp"
+        android:onClick="clickHandler"
         android:text="login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMain" />
@@ -39,5 +39,27 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/tvMain"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDialer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginBottom="79dp"
+        android:onClick="openDialer"
+        android:text="dialer"
+        app:layout_constraintBottom_toTopOf="@+id/etName"
+        app:layout_constraintStart_toStartOf="@+id/etName" />
+
+    <Button
+        android:id="@+id/btnAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="32dp"
+        android:text="alarm"
+        android:onClick="setAlarm"
+        app:layout_constraintBottom_toTopOf="@+id/btnDialer"
+        app:layout_constraintEnd_toEndOf="@+id/btnDialer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
