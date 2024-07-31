@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openMyCalendar(view: View) {
-        var calIntent = Intent("cognizant.portugal.android")
+        var calIntent = Intent("ineed.water")
         startActivity(calIntent)
     }
 }
