@@ -57,9 +57,20 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="32dp"
-        android:text="alarm"
         android:onClick="setAlarm"
+        android:text="alarm"
         app:layout_constraintBottom_toTopOf="@+id/btnDialer"
         app:layout_constraintEnd_toEndOf="@+id/btnDialer" />
+
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="openMyCalendar"
+        android:text="calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
