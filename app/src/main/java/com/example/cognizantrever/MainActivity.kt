@@ -57,4 +57,9 @@ class MainActivity : AppCompatActivity() {
         var calIntent = Intent("ineed.water")
         startActivity(calIntent)
     }
+
+    fun sendFlightBroadcast(view: View) {
+        var flightIntent = Intent("ihave.flight")
+        sendBroadcast(flightIntent)
+    }
 }
