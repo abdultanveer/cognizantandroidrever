@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getMarsPhotos() {
-        GlobalScope.launch(Dispatchers.IO) {
-            val listResult = MarsApi.retrofitService.getPhotos()
-            Log.i(TAG,listResult)
+        GlobalScope.launch(Dispatchers.IO) {       //async await
+            val listMarsPhoto = MarsApi.retrofitService.getPhotos()
+            Log.i(TAG,listMarsPhoto.get(0).imgSrc)
 
         }
     }
