@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cognizantrever.networking.MarsApi
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -35,9 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getMarsPhotos() {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO) {
             val listResult = MarsApi.retrofitService.getPhotos()
-            Log.i(TAG,listResult.toString())
+            Log.i(TAG,listResult)
 
         }
     }

@@ -1,6 +1,8 @@
 package com.example.cognizantrever.networking
 
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
 private const val BASE_URL =
@@ -8,16 +10,19 @@ private const val BASE_URL =
 
 
 private val retrofit = Retrofit.Builder()
+    .addConverterFactory(ScalarsConverterFactory.create())
+    //.addConverterFactory(GsonConverterFactory.create())
+
     .baseUrl(BASE_URL)
     .build()
-   // .addConverterFactory(ScalarsConverterFactory.create())
 
 //create--POST read--GET update--PUT delete-DELETE
 
 interface MarsApiService {
 
     @GET("photos")
-    fun getPhotos():String                  //http.get(url/endpoint):Response
+   suspend fun getPhotos():String
+//http.get(url/endpoint):Response
 
 }
 
