@@ -1,9 +1,13 @@
 package com.example.cognizantrever
 
+import android.content.ComponentName
 import android.content.Intent
+import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.AlarmClock
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -15,6 +19,7 @@ import com.example.cognizantrever.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
    lateinit var binding:ActivityMainBinding
+   var TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +39,36 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnStop.setOnClickListener { stopService(serviceIntent) }
+
+        binding.btnBind.setOnClickListener {
+            bindService(serviceIntent,mConnection, BIND_AUTO_CREATE)
+        }
+        binding.btnUnbind.setOnClickListener {
+           // stopService(serviceIntent)
+            unbindService(mConnection)
+        }
     }
 
-    fun clickHandler(view: View) {
+    val mConnection = object : ServiceConnection {
+        override fun onServiceConnected(name: ComponentName?, localBinder: IBinder?) {
+            //var myService = MyService()
+            val binder = localBinder as MyService.LocalBinder
+             var myService =   binder.getMyService()
+             var soccerScore = myService.latestScore()
+            Log.i(TAG,"score is--"+soccerScore)
+            var sum = myService.add(10,20)
+
+            Log.i(TAG,"sum is--"+sum)
+
+        }
+
+        override fun onServiceDisconnected(name: ComponentName?) {
+            Log.i(TAG,"service disconnected --")
+
+        }
+    }
+
+        fun clickHandler(view: View) {
        // EditText nameEdittext = findViewById(R.id.etName)
         var nameEditText : EditText = findViewById(R.id.etName)
         var mainTextView : TextView = findViewById(R.id.tvMain)
