@@ -2,6 +2,7 @@ package com.example.cognizantrever
 
 import android.app.Service
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.IBinder
 import android.util.Log
 
@@ -15,8 +16,9 @@ class MyService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
          super.onStartCommand(intent, flags, startId)
-        Log.i(TAG,"my service started")
-
+        Log.i(TAG,"my service started--"+intent?.getStringExtra("url"))
+        var player = MediaPlayer.create(this,R.raw.tune)
+        player.start()
         return START_STICKY
 
     }

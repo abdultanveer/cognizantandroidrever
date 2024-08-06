@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         var serviceIntent = Intent(this,MyService::class.java)
 
         binding.btnStart.setOnClickListener {
-            //start a service
+            serviceIntent.putExtra("url","imageurl.com")
             startService(serviceIntent)
         }
 
