@@ -7,8 +7,7 @@
         android:required="false" />
 
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -20,13 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CognizantRevEr"
         tools:targetApi="31">
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <receiver
             android:name=".SmsReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
-
             </intent-filter>
         </receiver>
 

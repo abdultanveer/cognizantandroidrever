@@ -9,14 +9,31 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cognizantrever.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
+
+   lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val constraintLayout = binding.root
+        setContentView(constraintLayout)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var serviceIntent = Intent(this,MyService::class.java)
+
+        binding.btnStart.setOnClickListener {
+            //start a service
+            startService(serviceIntent)
+        }
+
+        binding.btnStop.setOnClickListener { stopService(serviceIntent) }
     }
 
     fun clickHandler(view: View) {
