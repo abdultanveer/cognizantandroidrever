@@ -20,6 +20,18 @@ class MyService : Service() {
 
     }
 
+    private val aidlBinder = object :IAddListener.Stub(){
+        override fun add(a: Int, b: Int): Int {
+            return  a+b
+        }
+    }
+
+   /* private val aidlBinder = object : IAddListener.Stub() {
+        override fun add(fno: Int, sno: Int): Int {
+            return fno + sno;
+        }
+    }*/
+
         override fun onCreate() {
         super.onCreate()
         Log.i(TAG,"my service created")
@@ -50,7 +62,7 @@ class MyService : Service() {
 
     override fun onBind(intent: Intent): IBinder {
         Log.i(TAG,"some activity is trying to bind to this service")
-        return localBinder
+        return aidlBinder
 
     }
 }
